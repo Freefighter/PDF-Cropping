@@ -33,13 +33,15 @@ def addMargin(doc):
             page.cropBox.setUpperLeft((-delta, height))
             page.cropBox.setUpperRight((width+delta, height))
             
-            # Write the new page
-            writerObj.addPage(page)
         
+        # Write the new page
+        writerObj.addPage(page)
+        print("page %d done"%i)
             
-            # Create an output pdf
-            with open('temp_%s.pdf'%os.path.basename(doc), 'wb') as outstream:
-                writerObj.write(outstream)
+    # Create an output pdf
+    with open('temp_%s.pdf'%os.path.basename(doc), 'wb') as outstream:
+        writerObj.write(outstream)
+    print("write")
     
     # 最后再关，否则之前输出变空白
     pdfFileObj.close()

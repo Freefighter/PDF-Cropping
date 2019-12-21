@@ -12,7 +12,8 @@ SHIFT
 IF NOT "%~1"=="" GOTO _PARAMS_LOOP
 
 ECHO %PARAMS%
+Echo 6666
 python addMargin_Symmetric.py %PARAMS%
-REM move test.pdf "C:\Users\William\Desktop\test.pdf"
+
 
 pause

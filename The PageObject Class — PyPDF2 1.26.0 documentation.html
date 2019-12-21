@@ -1,0 +1,563 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The PageObject Class &mdash; PyPDF2 1.26.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.26.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyPDF2 1.26.0 documentation" href="index.html" />
+    <link rel="next" title="The PdfFileWriter Class" href="PdfFileWriter.html" />
+    <link rel="prev" title="The PdfFileMerger Class" href="PdfFileMerger.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="PdfFileWriter.html" title="The PdfFileWriter Class"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="PdfFileMerger.html" title="The PdfFileMerger Class"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PyPDF2 1.26.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="PdfFileMerger.html"
+                        title="previous chapter">The PdfFileMerger Class</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="PdfFileWriter.html"
+                        title="next chapter">The PdfFileWriter Class</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/PageObject.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-PyPDF2.pdf">
+<span id="the-pageobject-class"></span><h1>The PageObject Class<a class="headerlink" href="#module-PyPDF2.pdf" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="PyPDF2.pdf.PageObject">
+<em class="property">class </em><code class="descclassname">PyPDF2.pdf.</code><code class="descname">PageObject</code><span class="sig-paren">(</span><em>pdf=None</em>, <em>indirectRef=None</em><span class="sig-paren">)</span><a class="headerlink" href="#PyPDF2.pdf.PageObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class represents a single page within a PDF file.  Typically this
+object will be created by accessing the
+<a class="reference internal" href="PdfFileReader.html#PyPDF2.PdfFileReader.getPage" title="PyPDF2.PdfFileReader.getPage"><code class="xref py py-meth docutils literal"><span class="pre">getPage()</span></code></a> method of the
+<a class="reference internal" href="PdfFileReader.html#PyPDF2.PdfFileReader" title="PyPDF2.PdfFileReader"><code class="xref py py-class docutils literal"><span class="pre">PdfFileReader</span></code></a> class, but it is
+also possible to create an empty page with the
+<a class="reference internal" href="#PyPDF2.pdf.PageObject.createBlankPage" title="PyPDF2.pdf.PageObject.createBlankPage"><code class="xref py py-meth docutils literal"><span class="pre">createBlankPage()</span></code></a> static method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>pdf</strong> &#8211; PDF file the page belongs to.</li>
+<li><strong>indirectRef</strong> &#8211; Stores the original indirect reference to
+this object in its source PDF</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="PyPDF2.pdf.PageObject.addTransformation">
+<code class="descname">addTransformation</code><span class="sig-paren">(</span><em>ctm</em><span class="sig-paren">)</span><a class="headerlink" href="#PyPDF2.pdf.PageObject.addTransformation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies a transformation matrix to the page.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ctm</strong> (<em>tuple</em>) &#8211; A 6-element tuple containing the operands of the
+transformation matrix.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyPDF2.pdf.PageObject.artBox">
+<code class="descname">artBox</code><a class="headerlink" href="#PyPDF2.pdf.PageObject.artBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="RectangleObject.html#PyPDF2.generic.RectangleObject" title="PyPDF2.generic.RectangleObject"><code class="xref py py-class docutils literal"><span class="pre">RectangleObject</span></code></a>, expressed in default user space units,
+defining the extent of the page&#8217;s meaningful content as intended by the
+page&#8217;s creator.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyPDF2.pdf.PageObject.bleedBox">
+<code class="descname">bleedBox</code><a class="headerlink" href="#PyPDF2.pdf.PageObject.bleedBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="RectangleObject.html#PyPDF2.generic.RectangleObject" title="PyPDF2.generic.RectangleObject"><code class="xref py py-class docutils literal"><span class="pre">RectangleObject</span></code></a>, expressed in default user space units,
+defining the region to which the contents of the page should be clipped
+when output in a production enviroment.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyPDF2.pdf.PageObject.compressContentStreams">
+<code class="descname">compressContentStreams</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PyPDF2.pdf.PageObject.compressContentStreams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compresses the size of this page by joining all content streams and
+applying a FlateDecode filter.</p>
+<p>However, it is possible that this function will perform no action if
+content stream compression becomes &#8220;automatic&#8221; for some reason.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="PyPDF2.pdf.PageObject.createBlankPage">
+<em class="property">static </em><code class="descname">createBlankPage</code><span class="sig-paren">(</span><em>pdf=None</em>, <em>width=None</em>, <em>height=None</em><span class="sig-paren">)</span><a class="headerlink" href="#PyPDF2.pdf.PageObject.createBlankPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a new blank page.
+If <code class="docutils literal"><span class="pre">width</span></code> or <code class="docutils literal"><span class="pre">height</span></code> is <code class="docutils literal"><span class="pre">None</span></code>, try to get the page size
+from the last page of <em>pdf</em>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pdf</strong> &#8211; PDF file the page belongs to</li>
+<li><strong>width</strong> (<em>float</em>) &#8211; The width of the new page expressed in default user
+space units.</li>
+<li><strong>height</strong> (<em>float</em>) &#8211; The height of the new page expressed in default user
+space units.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the new blank page:</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#PyPDF2.pdf.PageObject" title="PyPDF2.pdf.PageObject"><code class="xref py py-class docutils literal"><span class="pre">PageObject</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises PageSizeNotDefinedError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">if <code class="docutils literal"><span class="pre">pdf</span></code> is <code class="docutils literal"><span class="pre">None</span></code> or contains
+no page</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyPDF2.pdf.PageObject.cropBox">
+<code class="descname">cropBox</code><a class="headerlink" href="#PyPDF2.pdf.PageObject.cropBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="RectangleObject.html#PyPDF2.generic.RectangleObject" title="PyPDF2.generic.RectangleObject"><code class="xref py py-class docutils literal"><span class="pre">RectangleObject</span></code></a>, expressed in default user space units,
+defining the visible region of default user space.  When the page is
+displayed or printed, its contents are to be clipped (cropped) to this
+rectangle and then imposed on the output medium in some
+implementation-defined manner.  Default value: same as <a class="reference internal" href="#PyPDF2.pdf.PageObject.mediaBox" title="PyPDF2.pdf.PageObject.mediaBox"><code class="xref py py-attr docutils literal"><span class="pre">mediaBox</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyPDF2.pdf.PageObject.extractText">
+<code class="descname">extractText</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PyPDF2.pdf.PageObject.extractText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Locate all text drawing commands, in the order they are provided in the
+content stream, and extract the text.  This works well for some PDF
+files, but poorly for others, depending on the generator used.  This will
+be refined in the future.  Do not rely on the order of text coming out of
+this function, as it will change if this function is made more
+sophisticated.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a unicode string object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyPDF2.pdf.PageObject.getContents">
+<code class="descname">getContents</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PyPDF2.pdf.PageObject.getContents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accesses the page contents.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the <code class="docutils literal"><span class="pre">/Contents</span></code> object, or <code class="docutils literal"><span class="pre">None</span></code> if it doesn&#8217;t exist.
+<code class="docutils literal"><span class="pre">/Contents</span></code> is optional, as described in PDF Reference  7.7.3.3</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyPDF2.pdf.PageObject.mediaBox">
+<code class="descname">mediaBox</code><a class="headerlink" href="#PyPDF2.pdf.PageObject.mediaBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="RectangleObject.html#PyPDF2.generic.RectangleObject" title="PyPDF2.generic.RectangleObject"><code class="xref py py-class docutils literal"><span class="pre">RectangleObject</span></code></a>, expressed in default user space units,
+defining the boundaries of the physical medium on which the page is
+intended to be displayed or printed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyPDF2.pdf.PageObject.mergePage">
+<code class="descname">mergePage</code><span class="sig-paren">(</span><em>page2</em><span class="sig-paren">)</span><a class="headerlink" href="#PyPDF2.pdf.PageObject.mergePage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges the content streams of two pages into one.  Resource references
+(i.e. fonts) are maintained from both pages.  The mediabox/cropbox/etc
+of this page are not altered.  The parameter page&#8217;s content stream will
+be added to the end of this page&#8217;s content stream, meaning that it will
+be drawn after, or &#8220;on top&#8221; of this page.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>page2</strong> (<a class="reference internal" href="#PyPDF2.pdf.PageObject" title="PyPDF2.pdf.PageObject"><em>PageObject</em></a>) &#8211; The page to be merged into this one. Should be
+an instance of <a class="reference internal" href="#PyPDF2.pdf.PageObject" title="PyPDF2.pdf.PageObject"><code class="xref py py-class docutils literal"><span class="pre">PageObject</span></code></a>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyPDF2.pdf.PageObject.mergeRotatedPage">
+<code class="descname">mergeRotatedPage</code><span class="sig-paren">(</span><em>page2</em>, <em>rotation</em>, <em>expand=False</em><span class="sig-paren">)</span><a class="headerlink" href="#PyPDF2.pdf.PageObject.mergeRotatedPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is similar to mergePage, but the stream to be merged is rotated
+by appling a transformation matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>page2</strong> (<a class="reference internal" href="#PyPDF2.pdf.PageObject" title="PyPDF2.pdf.PageObject"><em>PageObject</em></a>) &#8211; the page to be merged into this one. Should be
+an instance of <a class="reference internal" href="#PyPDF2.pdf.PageObject" title="PyPDF2.pdf.PageObject"><code class="xref py py-class docutils literal"><span class="pre">PageObject</span></code></a>.</li>
+<li><strong>rotation</strong> (<em>float</em>) &#8211; The angle of the rotation, in degrees</li>
+<li><strong>expand</strong> (<em>bool</em>) &#8211; Whether the page should be expanded to fit the
+dimensions of the page to be merged.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyPDF2.pdf.PageObject.mergeRotatedScaledPage">
+<code class="descname">mergeRotatedScaledPage</code><span class="sig-paren">(</span><em>page2</em>, <em>rotation</em>, <em>scale</em>, <em>expand=False</em><span class="sig-paren">)</span><a class="headerlink" href="#PyPDF2.pdf.PageObject.mergeRotatedScaledPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is similar to mergePage, but the stream to be merged is rotated
+and scaled by appling a transformation matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>page2</strong> (<a class="reference internal" href="#PyPDF2.pdf.PageObject" title="PyPDF2.pdf.PageObject"><em>PageObject</em></a>) &#8211; the page to be merged into this one. Should be
+an instance of <a class="reference internal" href="#PyPDF2.pdf.PageObject" title="PyPDF2.pdf.PageObject"><code class="xref py py-class docutils literal"><span class="pre">PageObject</span></code></a>.</li>
+<li><strong>rotation</strong> (<em>float</em>) &#8211; The angle of the rotation, in degrees</li>
+<li><strong>scale</strong> (<em>float</em>) &#8211; The scaling factor</li>
+<li><strong>expand</strong> (<em>bool</em>) &#8211; Whether the page should be expanded to fit the
+dimensions of the page to be merged.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyPDF2.pdf.PageObject.mergeRotatedScaledTranslatedPage">
+<code class="descname">mergeRotatedScaledTranslatedPage</code><span class="sig-paren">(</span><em>page2</em>, <em>rotation</em>, <em>scale</em>, <em>tx</em>, <em>ty</em>, <em>expand=False</em><span class="sig-paren">)</span><a class="headerlink" href="#PyPDF2.pdf.PageObject.mergeRotatedScaledTranslatedPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is similar to mergePage, but the stream to be merged is translated,
+rotated and scaled by appling a transformation matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>page2</strong> (<a class="reference internal" href="#PyPDF2.pdf.PageObject" title="PyPDF2.pdf.PageObject"><em>PageObject</em></a>) &#8211; the page to be merged into this one. Should be
+an instance of <a class="reference internal" href="#PyPDF2.pdf.PageObject" title="PyPDF2.pdf.PageObject"><code class="xref py py-class docutils literal"><span class="pre">PageObject</span></code></a>.</li>
+<li><strong>tx</strong> (<em>float</em>) &#8211; The translation on X axis</li>
+<li><strong>ty</strong> (<em>float</em>) &#8211; The translation on Y axis</li>
+<li><strong>rotation</strong> (<em>float</em>) &#8211; The angle of the rotation, in degrees</li>
+<li><strong>scale</strong> (<em>float</em>) &#8211; The scaling factor</li>
+<li><strong>expand</strong> (<em>bool</em>) &#8211; Whether the page should be expanded to fit the
+dimensions of the page to be merged.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyPDF2.pdf.PageObject.mergeRotatedTranslatedPage">
+<code class="descname">mergeRotatedTranslatedPage</code><span class="sig-paren">(</span><em>page2</em>, <em>rotation</em>, <em>tx</em>, <em>ty</em>, <em>expand=False</em><span class="sig-paren">)</span><a class="headerlink" href="#PyPDF2.pdf.PageObject.mergeRotatedTranslatedPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is similar to mergePage, but the stream to be merged is rotated
+and translated by appling a transformation matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>page2</strong> (<a class="reference internal" href="#PyPDF2.pdf.PageObject" title="PyPDF2.pdf.PageObject"><em>PageObject</em></a>) &#8211; the page to be merged into this one. Should be
+an instance of <a class="reference internal" href="#PyPDF2.pdf.PageObject" title="PyPDF2.pdf.PageObject"><code class="xref py py-class docutils literal"><span class="pre">PageObject</span></code></a>.</li>
+<li><strong>tx</strong> (<em>float</em>) &#8211; The translation on X axis</li>
+<li><strong>ty</strong> (<em>float</em>) &#8211; The translation on Y axis</li>
+<li><strong>rotation</strong> (<em>float</em>) &#8211; The angle of the rotation, in degrees</li>
+<li><strong>expand</strong> (<em>bool</em>) &#8211; Whether the page should be expanded to fit the
+dimensions of the page to be merged.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyPDF2.pdf.PageObject.mergeScaledPage">
+<code class="descname">mergeScaledPage</code><span class="sig-paren">(</span><em>page2</em>, <em>scale</em>, <em>expand=False</em><span class="sig-paren">)</span><a class="headerlink" href="#PyPDF2.pdf.PageObject.mergeScaledPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is similar to mergePage, but the stream to be merged is scaled
+by appling a transformation matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>page2</strong> (<a class="reference internal" href="#PyPDF2.pdf.PageObject" title="PyPDF2.pdf.PageObject"><em>PageObject</em></a>) &#8211; The page to be merged into this one. Should be
+an instance of <a class="reference internal" href="#PyPDF2.pdf.PageObject" title="PyPDF2.pdf.PageObject"><code class="xref py py-class docutils literal"><span class="pre">PageObject</span></code></a>.</li>
+<li><strong>scale</strong> (<em>float</em>) &#8211; The scaling factor</li>
+<li><strong>expand</strong> (<em>bool</em>) &#8211; Whether the page should be expanded to fit the
+dimensions of the page to be merged.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyPDF2.pdf.PageObject.mergeScaledTranslatedPage">
+<code class="descname">mergeScaledTranslatedPage</code><span class="sig-paren">(</span><em>page2</em>, <em>scale</em>, <em>tx</em>, <em>ty</em>, <em>expand=False</em><span class="sig-paren">)</span><a class="headerlink" href="#PyPDF2.pdf.PageObject.mergeScaledTranslatedPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is similar to mergePage, but the stream to be merged is translated
+and scaled by appling a transformation matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>page2</strong> (<a class="reference internal" href="#PyPDF2.pdf.PageObject" title="PyPDF2.pdf.PageObject"><em>PageObject</em></a>) &#8211; the page to be merged into this one. Should be
+an instance of <a class="reference internal" href="#PyPDF2.pdf.PageObject" title="PyPDF2.pdf.PageObject"><code class="xref py py-class docutils literal"><span class="pre">PageObject</span></code></a>.</li>
+<li><strong>scale</strong> (<em>float</em>) &#8211; The scaling factor</li>
+<li><strong>tx</strong> (<em>float</em>) &#8211; The translation on X axis</li>
+<li><strong>ty</strong> (<em>float</em>) &#8211; The translation on Y axis</li>
+<li><strong>expand</strong> (<em>bool</em>) &#8211; Whether the page should be expanded to fit the
+dimensions of the page to be merged.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyPDF2.pdf.PageObject.mergeTransformedPage">
+<code class="descname">mergeTransformedPage</code><span class="sig-paren">(</span><em>page2</em>, <em>ctm</em>, <em>expand=False</em><span class="sig-paren">)</span><a class="headerlink" href="#PyPDF2.pdf.PageObject.mergeTransformedPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is similar to mergePage, but a transformation matrix is
+applied to the merged stream.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>page2</strong> (<a class="reference internal" href="#PyPDF2.pdf.PageObject" title="PyPDF2.pdf.PageObject"><em>PageObject</em></a>) &#8211; The page to be merged into this one. Should be
+an instance of <a class="reference internal" href="#PyPDF2.pdf.PageObject" title="PyPDF2.pdf.PageObject"><code class="xref py py-class docutils literal"><span class="pre">PageObject</span></code></a>.</li>
+<li><strong>ctm</strong> (<em>tuple</em>) &#8211; a 6-element tuple containing the operands of the
+transformation matrix</li>
+<li><strong>expand</strong> (<em>bool</em>) &#8211; Whether the page should be expanded to fit the dimensions
+of the page to be merged.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyPDF2.pdf.PageObject.mergeTranslatedPage">
+<code class="descname">mergeTranslatedPage</code><span class="sig-paren">(</span><em>page2</em>, <em>tx</em>, <em>ty</em>, <em>expand=False</em><span class="sig-paren">)</span><a class="headerlink" href="#PyPDF2.pdf.PageObject.mergeTranslatedPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is similar to mergePage, but the stream to be merged is translated
+by appling a transformation matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>page2</strong> (<a class="reference internal" href="#PyPDF2.pdf.PageObject" title="PyPDF2.pdf.PageObject"><em>PageObject</em></a>) &#8211; the page to be merged into this one. Should be
+an instance of <a class="reference internal" href="#PyPDF2.pdf.PageObject" title="PyPDF2.pdf.PageObject"><code class="xref py py-class docutils literal"><span class="pre">PageObject</span></code></a>.</li>
+<li><strong>tx</strong> (<em>float</em>) &#8211; The translation on X axis</li>
+<li><strong>ty</strong> (<em>float</em>) &#8211; The translation on Y axis</li>
+<li><strong>expand</strong> (<em>bool</em>) &#8211; Whether the page should be expanded to fit the
+dimensions of the page to be merged.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyPDF2.pdf.PageObject.rotateClockwise">
+<code class="descname">rotateClockwise</code><span class="sig-paren">(</span><em>angle</em><span class="sig-paren">)</span><a class="headerlink" href="#PyPDF2.pdf.PageObject.rotateClockwise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotates a page clockwise by increments of 90 degrees.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>angle</strong> (<em>int</em>) &#8211; Angle to rotate the page.  Must be an increment
+of 90 deg.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyPDF2.pdf.PageObject.rotateCounterClockwise">
+<code class="descname">rotateCounterClockwise</code><span class="sig-paren">(</span><em>angle</em><span class="sig-paren">)</span><a class="headerlink" href="#PyPDF2.pdf.PageObject.rotateCounterClockwise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotates a page counter-clockwise by increments of 90 degrees.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>angle</strong> (<em>int</em>) &#8211; Angle to rotate the page.  Must be an increment
+of 90 deg.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyPDF2.pdf.PageObject.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>sx</em>, <em>sy</em><span class="sig-paren">)</span><a class="headerlink" href="#PyPDF2.pdf.PageObject.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scales a page by the given factors by appling a transformation
+matrix to its content and updating the page size.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>sx</strong> (<em>float</em>) &#8211; The scaling factor on horizontal axis.</li>
+<li><strong>sy</strong> (<em>float</em>) &#8211; The scaling factor on vertical axis.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyPDF2.pdf.PageObject.scaleBy">
+<code class="descname">scaleBy</code><span class="sig-paren">(</span><em>factor</em><span class="sig-paren">)</span><a class="headerlink" href="#PyPDF2.pdf.PageObject.scaleBy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scales a page by the given factor by appling a transformation
+matrix to its content and updating the page size.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>factor</strong> (<em>float</em>) &#8211; The scaling factor (for both X and Y axis).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="PyPDF2.pdf.PageObject.scaleTo">
+<code class="descname">scaleTo</code><span class="sig-paren">(</span><em>width</em>, <em>height</em><span class="sig-paren">)</span><a class="headerlink" href="#PyPDF2.pdf.PageObject.scaleTo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scales a page to the specified dimentions by appling a
+transformation matrix to its content and updating the page size.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>width</strong> (<em>float</em>) &#8211; The new width.</li>
+<li><strong>height</strong> (<em>float</em>) &#8211; The new heigth.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyPDF2.pdf.PageObject.trimBox">
+<code class="descname">trimBox</code><a class="headerlink" href="#PyPDF2.pdf.PageObject.trimBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="RectangleObject.html#PyPDF2.generic.RectangleObject" title="PyPDF2.generic.RectangleObject"><code class="xref py py-class docutils literal"><span class="pre">RectangleObject</span></code></a>, expressed in default user space units,
+defining the intended dimensions of the finished page after trimming.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="PdfFileWriter.html" title="The PdfFileWriter Class"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="PdfFileMerger.html" title="The PdfFileMerger Class"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PyPDF2 1.26.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Phaseit, Inc. and Mathieu Fenniak.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

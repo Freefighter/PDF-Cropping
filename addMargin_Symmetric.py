@@ -39,7 +39,9 @@ def addMargin(doc):
         print("page %d done"%i)
             
     # Create an output pdf
-    with open('temp_%s.pdf'%os.path.basename(doc), 'wb') as outstream:
+    # with open('\%USERPROFILE\%\\Desktop\\temp_%s' + os.path.basename(doc), 'wb') as outstream:
+    with open('{}\\Desktop\\temp_{}'.format(os.environ['USERPROFILE'], 
+        os.path.basename(doc)), 'wb') as outstream:
         writerObj.write(outstream)
     print("write")
     

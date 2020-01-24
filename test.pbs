@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+#PBS -l walltime=00:05:00
+#PBS -l nodes=1:ppn=1
+#PBS -N myjob 
+#PBS -q test
+# End of embedded QSUB options
+#
+
+# Run the hello world executable (a.out)
+cd "/home/netid/code path"
+module load python/3
+python3 test.py >> out.txt
